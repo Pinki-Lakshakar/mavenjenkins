@@ -1,0 +1,42 @@
+pipeline
+{
+    agent any
+
+    stages 
+    {
+        stage('Build') 
+        {
+            steps 
+            {
+                echo 'Building Pipeline'
+            }
+        }
+        
+        stage('Test') 
+        {
+            steps 
+            {
+                echo 'Testing the appliction'
+            }
+        }
+        
+         stage('Deploy') 
+        {
+            steps 
+            {
+                echo 'deployinhg the appliction'
+            }
+        }
+    }
+    
+    post
+    {
+        always
+        {
+            emailext body: '''Summary I love pizza ''', subject: 'Pipeline status', to: 'pinkilakshakar19@gmail.com'
+            
+        }
+    }
+}
+
+  
